@@ -1,0 +1,68 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+</SCRIPT>
+{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+.loader {
+	border: 16px solid #f3f3f3;
+	border-radius: 50%;
+	border-top: 16px solid blue;
+	border-bottom: 16px solid blue;
+	width: 120px;
+	height: 120px;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+}
+.container .btn {
+	position: relative;
+	top: 50%;
+	left: 35%;
+	border: none;
+	color: black;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.container .btn:hover {
+	background-color: black;
+	color: white;
+}
+</style>
+<title>Register</title>
+</head>
+<body>
+	<form method="POST" action="">
+		<br>
+		
+		<div class="container-fluid">
+			
+			<div class="container">
+				<b>
+					{{form | crispy }}
+					{% csrf_token %}
+					<button class="btn">
+						Register
+					</button>
+					
+				</b>
+				
+			</div>
+		</div>
+	</form>
+
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>

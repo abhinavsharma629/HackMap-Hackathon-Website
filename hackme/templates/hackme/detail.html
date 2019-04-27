@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Detail</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+	body
+	{
+		background-image: url("../static/images/bg.png");
+		background-repeat: no-repeat;
+		
+	}
+	
+</style>
+</head>
+<body>
+	<div class ="container">
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-4 text-center">
+									<img class="img-circle avatar avatar-original" style="-webkit-user-select:none; 
+									display:block; margin:auto;" src="http://robohash.org/sitsequiquia.png?size=120x120">
+								</div>
+								<div class="col-md-8">
+									<div class="row">
+										<div class="col-md-12">
+											{% for i in teamName %}
+											<h2 class="only-bottom-margin" style="color:orange;font-size:2.5em;">{{i.teamName}}</h2>
+											<br>
+										</div>
+									</div>
+									<div style="font-weight: bold; font-size: 20px; color: white;">
+										<div class="row">
+											<div class="col-md-15">
+												
+												<span class="text-muted ">Team Name:- </span>{{i.teamName}}<br>
+												<span class="text-muted"></span><br>
+												<span class="text-muted">Email Address:- </span>{{i.emailAddress}}<br>
+												<span class="text-muted"></span><br>
+												<span class="text-muted">Team Size:- </span>{{i.teamSize}}<br>
+
+												<br>
+												<br>
+												<h5 style="color:orange;font-size: 1.5em;">Team Details</h5>
+												{% if i.userDetail1|length > 0 %}
+												<span class="text-muted"></span><br>
+												<span class="text-muted">User 1:- </span>{{i.userDetail1}}<br>
+												{% endif %}
+
+												{% if i.userDetail2|length > 0 %}
+												<span class="text-muted"></span><br>
+												<span class="text-muted">User 2:- </span> {{i.userDetail2}}<br>
+												{% endif %}
+
+												{% if i.userDetail3|length > 0 %}
+												<span class="text-muted"></span><br>										
+												<span class="text-muted">User 3:- </span>{{i.userDetail3}}<br>
+												{% endif %}
+
+												{% if i.userDetail4|length > 0 %}
+												<span class="text-muted"></span><br>
+												<span class="text-muted">User 4:- </span>{{i.userDetail4}}
+												{% endif %}
+
+												<br>
+												<br>
+												<h5 style="color:orange;font-size:1.5em;">Project Details</h5>
+												<span class="text-muted"></span><br>
+												<span class="text-muted">Project Field:- </span>{{i.fieldProject}}<br>
+
+												<span class="text-muted"></span><br>
+												<span class="text-muted">Project Title:- </span>{{i.title}}<br>
+
+												<span class="text-muted"></span><br>
+												<span class="text-muted">Synopsis:- </span>{{i.synopsis}}<br>
+												{% endfor %}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<script type="text/javascript">
+		function startTimer() {
+			alert("Your are successfully registered!! We are redirecting you to the main page!! All The Best!!")
+			window.location.href="/";
+		}
+		setTimeout("startTimer()", 10000);
+	</script>
+</body>
+</html>

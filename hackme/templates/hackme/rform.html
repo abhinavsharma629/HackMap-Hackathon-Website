@@ -1,0 +1,109 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+</SCRIPT>
+{% load static %}
+<meta charset="utf-8">
+<title>Register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!-- Font-->
+<link rel="stylesheet" type="text/css" href="static/css/nunito-font.css">
+<!-- Main Style Css -->
+<link rel="stylesheet" href="static/css/style.css"/>
+
+
+</head>
+<body class="form-v9">
+	<div class="page-content">
+		<div class="form-v9-content" style="background-image: url('static/images/form-v9.jpg')">
+			<form class="form-detail" method="POST" action="">
+				<div class="container-fluid">
+					<b>
+						{% csrf_token %}
+
+						{% for non_field_error in form.non_field_errors %}
+						<p class="help is-danger">{{ non_field_error }}</p>
+						{% endfor %}
+
+						
+						<div class="form-row-total">
+							<div class="form-row">
+								<label for="{{ form.teamName.id_for_label }}" class="label">Team Name</label>
+								{{ form.teamName }}
+								{% for error in form.teamName.errors %}
+								<p class="help is-danger">{{ error }}</p>
+								{% endfor %}
+							</div>
+						</div>
+
+						<div class="form-row-total">
+							<div class="form-row">
+								<label for="{{ form.emailAddress.id_for_label }}" class="label">Email Address</label>
+								{{ form.emailAddress }}
+								{% for error in field.errors %}
+								<p class="help is-danger">{{ error }}</p>
+								{% endfor %}
+							</div>
+						</div>
+
+						<div class="form-row-total">
+							<div class="form-row">
+								<label for="{{ form.teamSize.id_for_label }}" class="label">Team Size</label>
+								{{ form.teamSize }}
+								{% for error in form.teamSize.errors %}
+								<p class="help is-danger">{{ error }}</p>
+								{% endfor %}
+							</div>
+						</div>
+
+
+						<div class="form-row-total">
+							<div class="form-row">
+								<label for="{{ form.userDetail.id_for_label }}" class="form-control">User Details</label>
+								{{ form.userDetail1 }}
+								{% for error in form.userDetail1.errors %}
+								<p class="help is-danger">{{ error }}</p>
+								{% endfor %}
+							</div>
+						</div>
+
+						<div class="form-row">
+							<label for="{{ form.fieldProject.id_for_label }}" class="label">Project Field</label>
+							{{ form.fieldProject }}
+							{% for error in form.fieldProject.errors %}
+							<p class="help is-danger">{{ error }}</p>
+							{% endfor %}
+						</div>
+					</div>
+
+					<div class="form-row-total">
+						<div class="form-row">
+							<label for="{{ form.title.id_for_label }}" class="label">Project Title</label>
+							{{ form.title }}
+							{% for error in form.title.errors %}
+							<p class="help is-danger">{{ error }}</p>
+							{% endfor %}
+						</div>
+					</div>
+
+					<div class="form-row-total">
+						<div class="form-row">
+							<label for="{{ form.synopsis.id_for_label }}" class="label">Synopsis</label>
+							{{ form.synopsis }}
+							{% for error in form.synopsis.errors %}
+							<p class="help is-danger">{{ error }}</p>
+							{% endfor %}
+						</div>
+					</div>
+
+				</b>
+				<div class="form-row-last">
+					<button class="btn">Register</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+</SCRIPT>
+{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+.loader {
+   border: 16px solid #f3f3f3;
+   border-radius: 50%;
+   border-top: 16px solid blue;
+   border-bottom: 16px solid blue;
+   width: 120px;
+   height: 120px;
+   -webkit-animation: spin 2s linear infinite;
+   animation: spin 2s linear infinite;
+}
+.container .btn {
+   position: relative;
+   top: 50%;
+   left: 35%;
+   border: none;
+   color: black;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+}
+.container .btn:hover {
+   background-color: black;
+   color: white;
+}
+</style>
+<title>Contact</title>
+</head>
+<body>
+   <form method="POST" action="">
+      {% csrf_token %}
+      <br>
+      <div class="container-fluid">
+         <div class="container">
+            <b>
+               {% for non_field_error in form.non_field_errors %}
+               <p class="help is-danger">{{ non_field_error }}</p>
+               {% endfor %}
+               <div id="div_id_teamName" class="form-group">
+                  <label for="id_teamName" class="control-label  requiredField">
+                     Team Name<span class="asteriskField">*</span> </label> 
+                     <div class="controls ">
+                        <input type="text" name="teamName" maxlength="100" class="textinput textInput form-control" required="" id="id_teamName" placeholder="Your Team's Name"> 
+                        {% for error in form.teamName.errors %}
+                        <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                     </div>
+                  </div>
+                  <div id="div_id_emailAddress" class="form-group">
+                     <label for="id_emailAddress" class="control-label  requiredField">
+                        Email Address<span class="asteriskField">*</span> </label> 
+                        <div class="controls ">
+                           <input type="email" name="emailAddress" placeholder="Email Address" maxlength="254" class="emailinput form-control" required="" id="id_emailAddress">
+                           {% for error in field.errors %}
+                           <p class="help is-danger">{{ error }}</p>
+                           {% endfor %} 
+                        </div>
+                     </div>
+                     <div id="div_id_github_username" class="form-group">
+                        <label for="id_github_username" class="control-label  requiredField">
+                           Github Link<span class="asteriskField">*</span> </label> 
+                           <div class="controls ">
+                              <input type="text" name="github_username" placeholder="https://github.com/abhinavsharma629" maxlength="150" class="textinput textInput form-control" required="" id="id_github_username">
+                              {% for error in field.errors %}
+                              <p class="help is-danger">{{ error }}</p>
+                              {% endfor %}  
+                           </div>
+                        </div>
+                        <div id="div_id_project_repo_name" class="form-group">
+                           <label for="id_project_repo_name" class="control-label  requiredField">
+                              Project Repository Link<span class="asteriskField">*</span> </label> 
+                              <div class="controls ">
+                                 <input type="text" placeholder="https://github.com/abhinavsharma629/Data-Structures" name="project_repo_name" maxlength="150" class="textinput textInput form-control" required="" id="id_project_repo_name">
+                                 {% for error in field.errors %}
+                                 <p class="help is-danger">{{ error }}</p>
+                                 {% endfor %}   
+                              </div>
+                           </div>
+                           <div id="div_id_teamSize" class="form-group">
+                              <label for="id_teamSize" class="control-label  requiredField">
+                                 Team Size<span class="asteriskField">*</span> </label> 
+                                 <div class="controls ">
+
+                                    <select name="teamSize" class="select form-control" required="" id="id_teamSize" onchange="myfunction(this)">
+                                       <option value="1" selected>1</option>
+                                       <option value="2">2</option>
+                                       <option value="3">3</option>
+                                    </select>
+                                    {% for error in form.teamSize.errors %}
+                                    <p class="help is-danger">{{ error }}</p>
+                                    {% endfor %}
+                                 </div>
+                              </div>
+                              <div id="div_id_userDetail1" class="form-group">
+                                 <label for="id_userDetail1" class="control-label  requiredField">
+                                    User 1<span class="asteriskField">*</span> </label> 
+                                    <div class="controls ">
+                                       <input type="text" name="userDetail1" placeholder="User Detail:- Name, Enrollment Number, Shirt Size" maxlength="150" class="textinput textInput form-control" required="" id="id_userDetail1">
+                                       {% for error in form.userDetail1.errors %}
+                                       <p class="help is-danger">{{ error }}</p>
+                                       {% endfor %} 
+                                    </div>
+                                 </div>
+                                 <div id="div_id_userDetail2" class="form-group" style="display: none;">
+                                    <label for="id_userDetail2" class="control-label ">
+                                       User 2<span class="asteriskField">*</span>
+                                    </label> 
+                                    <div class="controls ">
+                                       <input type="text" placeholder="User Detail:- Name, Enrollment Number, Shirt Size" name="userDetail2" maxlength="150" class="textinput textInput form-control" id="id_userDetail2" required=""> 
+                                       {% for error in form.userDetail2.errors %}
+                                       <p class="help is-danger">{{ error }}</p>
+                                       {% endfor %}
+                                    </div>
+                                 </div>
+                                 <div id="div_id_userDetail3" class="form-group" style="display: none;">
+                                    <label for="id_userDetail3" class="control-label ">
+                                       User 3<span class="asteriskField">*</span>
+                                    </label> 
+                                    <div class="controls ">
+                                       <input type="text" placeholder="User Detail:- Name, Enrollment Number, Shirt Size" name="userDetail3" maxlength="150" class="textinput textInput form-control" id="id_userDetail3" required="">
+                                       {% for error in form.userDetail3.errors %}
+                                       <p class="help is-danger">{{ error }}</p>
+                                       {% endfor %}
+                                    </div>
+                                 </div>
+                                 <div id="div_id_fieldProject" class="form-group">
+                                    <label for="id_fieldProject" class="control-label  requiredField">
+                                       Project Field<span class="asteriskField">*</span> </label> 
+                                       <div class="controls ">
+                                          <input type="text" name="fieldProject" placeholder="Example:- AI" maxlength="30" class="textinput textInput form-control" required="" id="id_fieldProject"> 
+                                          {% for error in form.fieldProject.errors %}
+                                          <p class="help is-danger">{{ error }}</p>
+                                          {% endfor %}
+                                       </div>
+                                    </div>
+                                    <div id="div_id_title" class="form-group">
+                                       <label for="id_title" class="control-label  requiredField">
+                                          Title<span class="asteriskField">*</span> </label> 
+                                          <div class="controls ">
+                                             <input type="text" name="title" placeholder="Example:- StopStalk" maxlength="50" class="textinput textInput form-control" required="" id="id_title"> 
+                                             {% for error in form.title.errors %}
+                                             <p class="help is-danger">{{ error }}</p>
+                                             {% endfor %}
+                                          </div>
+                                       </div>
+                                       <div id="div_id_synopsis" class="form-group">
+                                          <label for="id_synopsis" class="control-label  requiredField">
+                                             Synopsis<span class="asteriskField">*</span> </label> 
+                                             <div class="controls ">
+                                                <textarea name="synopsis" placeholder="Maximum:- 500 words" cols="40" rows="10" class="textarea form-control" required="" id="id_synopsis"></textarea>
+                                                {% for error in form.synopsis.errors %}
+                                                <p class="help is-danger">{{ error }}</p>
+                                                {% endfor %}
+                                             </div>
+                                          </div>
+                                          <button class="btn">
+                                             Register
+                                          </button>
+                                       </b>
+                                    </div>
+                                 </div>
+                              </form>
+                              <script type="text/javascript">
+                                 for(let i=0;i<1;i++){
+                                    let k=document.getElementById('id_teamSize')
+                                    console.log(k.value)
+                                 myfunction(k);}
+                                 function myfunction(k)
+                                 {
+                                    console.log(k)
+                                  var l="div_id_userDetail"
+                                  for(i=1 ;i<=3;i++){
+                                   if(i<=k.value){
+                                    document.getElementById(l+String(i)).style.display="block";
+               // document.getElementById('id_userDetail'+String(i)).attributes["required"]="";
+               //document.getElementById('id_userDetail'+String(i)).setAttribute('id_userDetail'+String(i),"required")
+            }
+            else{
+               document.getElementById(l+String(i)).style.display="none";
+               document.getElementById('id_userDetail'+String(i)).removeAttribute("required"); 
+            }
+            console.log(document.getElementById('id_userDetail'+String(i)).attributes);
+         }
+      }
+      
+      details="{{detail}}";
+      if(details.length != 0)
+      {
+         window.top.top.location.href = "detail/"+details;
+      }
+   </script>
+</body>
+</html>
